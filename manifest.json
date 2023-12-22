@@ -1,0 +1,12 @@
+﻿{
+  "name": "ItemEveryStage",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/Lawlzee/ItemEveryStage",
+  "displayName": "ItemEveryStage",
+  "description": "Gives items at the start of every stage. The given items are configurable.",
+  "dependencies": [
+    "bbepis-BepInExPack-5.4.2108",
+    "RiskofThunder-HookGenPatcher-1.2.3",
+    "Rune580-Risk_Of_Options-2.7.0"
+  ]
+}
