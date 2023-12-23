@@ -18,7 +18,7 @@ namespace ItemEveryStage
         public const string PluginGUID = "Lawlzee.ItemEveryStage";
         public const string PluginAuthor = "Lawlzee";
         public const string PluginName = "ItemEveryStage";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.1";
 
         private const string _itemsToGiveDescription = """
             Controls which items are given at every stage.
@@ -110,10 +110,13 @@ namespace ItemEveryStage
             {
                 foreach (var character in CharacterMaster.readOnlyInstancesList)
                 {
-                    foreach (var itemGift in GetItemGifts())
+                    if (character.playerCharacterMasterController && character.playerCharacterMasterController.networkUser)
                     {
-                        character.inventory.GiveItem(itemGift.ItemIndex, itemGift.Quantity);
-                        GenericPickupController.SendPickupMessage(character, PickupCatalog.FindPickupIndex(itemGift.ItemIndex));
+                        foreach (var itemGift in GetItemGifts())
+                        {
+                            character.inventory.GiveItem(itemGift.ItemIndex, itemGift.Quantity);
+                            GenericPickupController.SendPickupMessage(character, PickupCatalog.FindPickupIndex(itemGift.ItemIndex));
+                        }
                     }
                 }
             }
