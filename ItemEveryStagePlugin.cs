@@ -18,7 +18,7 @@ namespace ItemEveryStage
         public const string PluginGUID = "Lawlzee.ItemEveryStage";
         public const string PluginAuthor = "Lawlzee";
         public const string PluginName = "ItemEveryStage";
-        public const string PluginVersion = "1.0.1";
+        public const string PluginVersion = "1.0.2";
 
         private const string _itemsToGiveDescription = """
             Controls which items are given at every stage.
@@ -69,7 +69,7 @@ namespace ItemEveryStage
                 return;
             }
 
-            var orderedItemNames = ItemCatalog.itemDefs
+            var orderedItemNames = ItemCatalog.allItemDefs
                 .Select(x => $"{Language.GetString(x.nameToken)}: '{x.name}'")
                 .OrderBy(x => x);
 
@@ -149,7 +149,7 @@ namespace ItemEveryStage
 
                     if (int.TryParse(quantity, out int quantityValue))
                     {
-                        foreach (var itemDef in ItemCatalog.itemDefs)
+                        foreach (var itemDef in ItemCatalog.allItemDefs)
                         {
                             if (item.Equals(itemDef.name, StringComparison.OrdinalIgnoreCase))
                             {
